@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 03:34:35 by sshabali          #+#    #+#             */
-/*   Updated: 2024/12/30 04:12:16 by sshabali         ###   ########.fr       */
+/*   Updated: 2024/12/30 05:49:02 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ int	main(int argc, char **argv)
 		argc--;
 	
 	}
-	int len = ft_lstsize(a);
-	t_stack *temp;
 	sort(&a, &b);
-	while (len)
-	{
-		temp = ft_pop(&a);
-		ft_printf("%d: %d\n", len, temp->value);
-		free(temp);
-		len--;
-	}
 	ft_lstclear(&a);
+	ft_lstclear(&b);
 	return (0);
 }
