@@ -1,46 +1,44 @@
-SRCS		=	srcs/main.c \
-				srcs/general_stack_functions.c \
-				srcs/swap_functions.c \
-				srcs/push_functions.c \
-				srcs/sort.c \
-				srcs/rotate_functions.c \
-				srcs/reverse_rotate_functions.c \
-				srcs/converters.c \
-				srcs/ft_printf.c \
-				srcs/hex_functions.c \
-				srcs/number_functions.c \
-				srcs/print_format.c \
-				srcs/ptr_functions.c \
-				srcs/string_functions.c \
-				srcs/unumber_functions.c \
-				srcs/utils.c
+SRCS		=	main.c \
+				general_stack_functions.c \
+				swap_functions.c \
+				push_functions.c \
+				sort.c \
+				rotate_functions.c \
+				reverse_rotate_functions.c \
 
-INCLUDES	=	includes/push_swap.h \
-				includes/ft_printf.h
+SRCS_F		=	srcs/
+OBJS_F		=	objs/
 
-OBJS		=	${SRCS:.c=.o}
-NAME		=	push_swap
+LIBFT		= includes/libft/
+HEADER		= includes/push_swap.h
 
-CC			=	cc
-RM			=	rm -f
-CFLAGS		=	#-Wall -Wextra -Werror
+OBJS		=	$(SRCS:.c=.o)
+OBJS_P		=	$(addprefix $(OBJS_F), $(OBJS))
+NAME		= 	push_swap
 
-all:				${NAME}
+all:$(NAME)
 
-.c.o:
-					${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+$(OBJS_F)%.o: $(SRCS_F)%.c Makefile $(HEADER) | $(OBJS_F)
+	@echo "Working on: $<"
+	@$(CC) $(CC_FLAGS) -O3 -c $< -o $@ -I.
 
-${OBJS}:			${INCLUDES}
+$(OBJS_F):
+	@mkdir -p $(OBJS_F)
 
-$(NAME):			${INCLUDES} ${OBJS}
-					${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+$(NAME): $(OBJS_P)
+	@$(MAKE) -C $(LIBFT) 
+	@$(CC) $(CC_FLAGS) -O3 -o $(NAME) $(OBJS_P) $(LIBFT)/libft.a 
+	@echo "Push_swap compiled successfully!"
 
 clean:
-					${RM} ${OBJS}
+	@rm -rf $(OBJS_F)
+	@$(MAKE) fclean -C $(LIBFT) 
+	@echo "Push_swap objects removed!"
 
-fclean:				clean
-					${RM} ${NAME}
+fclean:	clean
+	@rm -rf $(NAME)
+	@echo "Push_swap removed!"
 
-re:					fclean all
+re:		fclean all
 
-.PHONY:				all bonus clean fclean re
+.PHONY:	all clean fclean re

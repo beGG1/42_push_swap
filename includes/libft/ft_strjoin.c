@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/10 14:02:05 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/10 14:12:17 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (!lst)
+	char	*ptr;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 || !s2)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
-	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
-	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[j])
+		ptr[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		ptr[i++] = s2[j++];
+	ptr[i] = '\0';
+	return (ptr);
 }

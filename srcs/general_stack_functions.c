@@ -6,22 +6,22 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 21:16:59 by sshabali          #+#    #+#             */
-/*   Updated: 2024/12/29 22:51:08 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/04 10:36:42 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_lstclear(t_stack **lst)
+void	ft_stackclear(t_stack **lst)
 {
 	if (!lst || !(*lst))
 		return ;
-	ft_lstclear(&(*lst)->next);
+	ft_stackclear(&(*lst)->next);
 	free(*lst);
 	*lst = 0;
 }
 
-int	ft_lstsize(t_stack *lst)
+int	ft_stacksize(t_stack *lst)
 {
 	int	size;
 
@@ -34,7 +34,7 @@ int	ft_lstsize(t_stack *lst)
 	return (size);
 }
 
-int	ft_lstadd_back(t_stack **lst, int value)
+int	ft_stackadd_back(t_stack **lst, int value)
 {
 	t_stack	*l;
 	t_stack	*new;
@@ -42,7 +42,7 @@ int	ft_lstadd_back(t_stack **lst, int value)
 	new = (t_stack *)malloc(sizeof(*new) * 1);
 	if (new == NULL)
 	{
-		ft_lstclear(lst);
+		ft_stackclear(lst);
 		return (1);
 	}
 	new->value = value;
@@ -69,7 +69,7 @@ t_stack	*ft_pop(t_stack **lst)
 	if (!lst || !(*lst))
 		return (NULL);
 	l = *lst;
-	size = ft_lstsize(l);
+	size = ft_stacksize(l);
 	if (size == 1)
 	{
 		temp = l;

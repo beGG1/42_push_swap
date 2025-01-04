@@ -6,11 +6,11 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 22:33:57 by sshabali          #+#    #+#             */
-/*   Updated: 2024/12/30 05:38:17 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/04 10:16:34 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 char	*int_to_hex(int num, char a)
 {
@@ -83,14 +83,14 @@ char	*ft_utoa(unsigned int n)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_print(int n)
 {
 	long	num;
 	char	*str;
 	int		len;
 	int		i;
 
-	len = ft_numlen(n);
+	len = ft_numlen_print(n);
 	num = n;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
@@ -110,32 +110,4 @@ char	*ft_itoa(int n)
 		num /= 10;
 	}
 	return (str);
-}
-
-int	ft_atoi(const char *nptr, int *a)
-{
-	int	sign;
-	int	result;
-	int	i;
-
-	i = 0;
-	sign = 1;
-	result = 0;
-	while ((nptr[i] <= 13 && nptr[i] >= 9) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
-	if (nptr[i] != 0)
-		return (0);
-	*a = sign * result;
-	return (1);
 }

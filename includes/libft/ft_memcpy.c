@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/05 13:29:55 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/05 13:33:26 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	char	*d;
+	char	*s;
+	size_t	i;
 
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
+	i = 0;
+	d = (char *)dest;
+	s = (char *)src;
+	while (i < n)
 	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
+		d[i] = s[i];
+		i++;
 	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	return (dest);
 }

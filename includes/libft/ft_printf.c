@@ -6,11 +6,11 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 02:22:30 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/20 02:22:31 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/04 10:16:34 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 static int	not_percent(const char *str, int i, int pr)
 {
@@ -29,7 +29,7 @@ static int	percent_met(const char *str, int *i, va_list args, int *pr)
 
 	temp = 0;
 	out = 0;
-	if (in_set(str[*i + 1], "idscupxX%%"))
+	if (in_set_print(str[*i + 1], "idscupxX%%"))
 		temp = print_format(str[*i + 1], args, *pr);
 	if (temp < 0)
 	{

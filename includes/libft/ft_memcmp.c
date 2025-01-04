@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/07 16:37:26 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/07 16:44:00 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	unsigned char	*ps1;
+	unsigned char	*ps2;
 
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
+	ps1 = (unsigned char *)s1;
+	ps2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while ((*ps1 == *ps2) && n)
 	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
+		ps1++;
+		ps2++;
+		n--;
 	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	if (!n)
+		return (0);
+	return ((unsigned char)*ps1 - (unsigned char)*ps2);
 }

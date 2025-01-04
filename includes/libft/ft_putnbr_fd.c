@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/12 18:49:59 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/12 19:03:17 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
+	if (n == -2147483648)
 	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
+		ft_putstr_fd("-2147483648", fd);
 	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + '0', fd);
+	}
+	else
+	{
+		ft_putchar_fd(n + '0', fd);
+	}
 }

@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/06 18:23:05 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/06 18:30:19 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	size_t	i;
+	char	*ret;
+	char	ch;
 
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
+	ret = 0;
+	i = 0;
+	ch = c % 256;
+	while (s[i])
 	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
+		if (s[i] == ch)
+			ret = (char *)s + i;
+		i++;
 	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	if (ch == 0 && s[i] == '\0')
+		ret = (char *)s + i;
+	return (ret);
 }

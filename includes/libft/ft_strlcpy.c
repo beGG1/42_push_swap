@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/06 17:36:01 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/06 17:41:46 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+	size_t	src_len;
+	size_t	to_copy;
+	size_t	i;
 
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
+	src_len = ft_strlen(src);
+	if (size != 0)
 	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
+		if (src_len < size)
+			to_copy = src_len;
+		else
+			to_copy = size - 1;
+		i = 0;
+		while (i < to_copy)
 		{
-			pa(a, b);
-			sa(a);
+			dst[i] = src[i];
+			i++;
 		}
-		pb(a, b);
+		dst[to_copy] = '\0';
 	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	return (src_len);
 }

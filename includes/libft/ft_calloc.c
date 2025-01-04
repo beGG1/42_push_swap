@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 04:08:52 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:40:48 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/09 15:30:18 by sshabali          #+#    #+#             */
+/*   Updated: 2024/11/09 15:38:22 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-t_stack	*ft_stacklast(t_stack *lst)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (!lst)
+	size_t		total_size;
+	char		*ptr;
+
+	total_size = nmemb * size;
+	if (size != 0 && total_size / size != nmemb)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-int	sort(t_stack **a, t_stack **b)
-{
-	int aa;
-
-	while (ft_stacksize(*a))
-	{
-		aa = ft_stacklast(*a)-> value;
-		while (ft_stacksize(*b) && ft_stacklast(*b)->value > aa)
-		{
-			pa(a, b);
-			sa(a);
-		}
-		pb(a, b);
-	}
-	while (ft_stacksize(*b))
-		pa(a, b);
-	return (1);
+	ptr = malloc(total_size);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, total_size);
+	return (ptr);
 }

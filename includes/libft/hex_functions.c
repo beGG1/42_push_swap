@@ -1,51 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_functions.c                                 :+:      :+:    :+:   */
+/*   hex_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 22:42:53 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/24 22:44:58 by sshabali         ###   ########.fr       */
+/*   Created: 2024/11/28 01:32:14 by sshabali          #+#    #+#             */
+/*   Updated: 2025/01/04 10:16:34 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
-int	str_len(char *str)
+int	len_hex(unsigned long long n)
 {
 	int	len;
 
 	len = 0;
-	while (str[len])
+	if (n == 0)
+		return (1);
+	while (n)
+	{
 		len++;
+		n /= 16;
+	}
 	return (len);
 }
 
-int	print_string(char *str)
+static int	print_hex(int n, char a)
 {
-	int		len;
-	char	*s;
+	char	*nbr;
+	int		temp;
 
-	if (str == NULL)
-		s = "(null)";
-	else
-		s = str;
-	len = str_len(s);
-	return (write(1, s, len));
+	nbr = int_to_hex(n, a);
+	if (!nbr)
+		return (-1);
+	temp = print_string(nbr);
+	free(nbr);
+	return (temp);
 }
 
-int	print_char(int c)
-{
-	unsigned char	ch;
-
-	ch = c;
-	return (write(1, &ch, 1));
-}
-
-int	print_str_arg(char *str, int pr)
+int	print_hex_arg(int n, char c, int pr)
 {
 	if (pr)
-		return (print_string(str));
-	return (str_len(str));
+		return (print_hex(n, c));
+	return (len_hex((unsigned int)n));
 }

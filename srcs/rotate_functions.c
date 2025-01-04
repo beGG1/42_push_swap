@@ -6,12 +6,11 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 02:21:47 by sshabali          #+#    #+#             */
-/*   Updated: 2024/12/30 03:50:52 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/04 10:41:05 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/ft_printf.h"
 
 int	ra(t_stack **a)
 {
@@ -19,7 +18,7 @@ int	ra(t_stack **a)
 	t_stack	*last;
 	t_stack	*prev_last;
 
-	len = ft_lstsize(*a);
+	len = ft_stacksize(*a);
 	if (len <= 1)
 		return (1);
 	last = *a;
@@ -42,7 +41,7 @@ int	rb(t_stack **a)
 	t_stack	*first;
 	t_stack	*last;
 
-	len = ft_lstsize(*a);
+	len = ft_stacksize(*a);
 	if (len <= 1)
 		return (1);
 	first = *a;

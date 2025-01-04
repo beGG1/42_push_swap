@@ -6,11 +6,11 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 01:32:42 by sshabali          #+#    #+#             */
-/*   Updated: 2024/11/28 01:32:45 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/04 10:16:34 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 int	print_format(char c, va_list args, int pr)
 {
