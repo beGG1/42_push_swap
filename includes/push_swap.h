@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 03:23:26 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:36:02 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/01/05 10:10:15 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 #include <stdlib.h>
+#include <limits.h>
 # include "./libft/libft.h"
 
 typedef struct s_stack
@@ -39,6 +40,10 @@ int	rra(t_stack **a);
 int	rrb(t_stack **a);
 int	rrr(t_stack **a, t_stack **b);
 int sort(t_stack **a, t_stack **b);
+
+int	ft_toi(const char *nptr);
+
+void	error_handler(char **argv);
 
 
 #endif
