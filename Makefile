@@ -5,6 +5,8 @@ SRCS		=	main.c \
 				sort.c \
 				rotate_functions.c \
 				reverse_rotate_functions.c \
+				utils.c \
+				error_handlers.c
 
 SRCS_F		=	srcs/
 OBJS_F		=	objs/

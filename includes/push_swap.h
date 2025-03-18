@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 03:23:26 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/05 10:10:15 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/17 05:57:10 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_stackclear(t_stack **lst);
 int		ft_stacksize(t_stack *lst);
 int		ft_stackadd_back(t_stack **lst, int value);
 t_stack	*ft_pop(t_stack **lst);
+void	init_stack(t_stack **stack, int argc, char **argv);
 
 int	sa(t_stack **a);
 int	sb(t_stack **a);

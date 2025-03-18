@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 09:48:47 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/05 10:10:25 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:59:38 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	check_convertions(char **argv)
 			write(2, "Error\n", 6);
 			exit(1);
 		}
+		i++;
 	}
 }
 

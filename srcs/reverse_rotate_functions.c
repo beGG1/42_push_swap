@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 02:24:41 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:37:08 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:08:01 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,34 @@
 
 int rra(t_stack **a)
 {
-	int		 len;
-	t_stack	*first;
-	t_stack	*last;
+	t_stack *prev_last;
+	t_stack *last;
 
-	len = ft_stacksize(*a);
-	if (len <= 1)
-		return (1);
-	first = *a;
+	if (!a || !(*a) || !(*a)->next)
+		return (1); // No need to rotate if empty or only one element
+
+	prev_last = NULL;
 	last = *a;
+
+	// Find the second-to-last and last node
 	while (last->next)
+	{
+		prev_last = last;
 		last = last->next;
-	last->next = first;
-	*a = first->next;
-	first->next = 0;
+	}
+
+	// Make the second-to-last node the new last node
+	if (prev_last)
+		prev_last->next = NULL;
+
+	// Move the last node to the front
+	last->next = *a;
+	*a = last;
+
 	ft_printf("rra\n");
 	return (1);
 }
+
 
 int rrb(t_stack **a)
 {

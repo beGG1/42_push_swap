@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 21:16:59 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/04 10:36:42 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:16:14 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,36 @@ t_stack	*ft_pop(t_stack **lst)
 	temp = l->next;
 	l->next = NULL;
 	return (temp);
+}
+
+int	ft_stackadd_front(t_stack **lst, int value)
+{
+	t_stack	*l;
+	t_stack	*new;
+
+	new = (t_stack *)malloc(sizeof(*new) * 1);
+	if (new == NULL)
+	{
+		ft_stackclear(lst);
+		return (1);
+	}
+	new->value = value;
+	if (ft_stacksize(*lst) == 0)
+		new->next = 0;
+	else
+		new->next = *lst;
+	*lst = new;
+	return (1);
+}
+
+void	init_stack(t_stack **stack, int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc) 
+	{
+		ft_stackadd_back(stack, ft_toi(argv[i]));
+		i++;
+	}
 }
