@@ -6,16 +6,16 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 10:00:15 by sshabali          #+#    #+#             */
-/*   Updated: 2025/01/05 10:02:43 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:41:48 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_toi(const char *nptr)
+long	ft_toi(const char *nptr)
 {
 	int		i;
-	int		sign;
+	long		sign;
 	long	res;
 
 	i = 0;

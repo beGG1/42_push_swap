@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 03:34:35 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/18 17:15:33 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:39:23 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int	main(int argc, char **argv)
 	b = (t_stack *)malloc(sizeof(t_stack));
 	
 	a = NULL;
-	
+	b = NULL;
+
 	init_stack(&a, argc, argv);
 	sort(&a, &b);
 	
-	while (a)
-	{
-		ft_printf("%d ", a->value);
-		a = a->next;
-	}
-	ft_printf("\n");
+	// while (a)
+	// {
+	// 	ft_printf("%d ", a->value);
+	// 	a = a->next;
+	// }
+	// ft_printf("\n");
+	ft_stackclear(a);
+	ft_stackclear(b);
 	return (0);
 }

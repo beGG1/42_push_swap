@@ -6,19 +6,26 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 21:16:59 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/18 17:16:14 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:34:22 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_stackclear(t_stack **lst)
+void	ft_stackclear(t_stack *lst)
 {
-	if (!lst || !(*lst))
-		return ;
-	ft_stackclear(&(*lst)->next);
-	free(*lst);
-	*lst = 0;
+	t_stack *temp;
+
+	if (lst)
+	{
+		while (lst)
+		{
+			temp = lst->next;  // Save the next node
+			free(lst);           // Free the current node
+			lst = temp;          // Move to the next node
+		}
+		lst = NULL;
+	}
 }
 
 int	ft_stacksize(t_stack *lst)
@@ -42,7 +49,7 @@ int	ft_stackadd_back(t_stack **lst, int value)
 	new = (t_stack *)malloc(sizeof(*new) * 1);
 	if (new == NULL)
 	{
-		ft_stackclear(lst);
+		ft_stackclear(*lst);
 		return (1);
 	}
 	new->value = value;
@@ -60,51 +67,31 @@ int	ft_stackadd_back(t_stack **lst, int value)
 	return (1);
 }
 
-t_stack	*ft_pop(t_stack **lst)
+t_stack	*ft_pop(t_stack **stack)
 {
-	t_stack	*l;
-	t_stack	*temp;
-	int		size;
+	t_stack	*top;
 
-	if (!lst || !(*lst))
+	if (!stack || !*stack)
 		return (NULL);
-	l = *lst;
-	size = ft_stacksize(l);
-	if (size == 1)
-	{
-		temp = l;
-		*lst = NULL;
-		return (temp);
-	}
-	while (size - 2 > 0)
-	{
-		l = l->next;
-		size--;
-	}
-	temp = l->next;
-	l->next = NULL;
-	return (temp);
+	top = *stack;
+	*stack = (*stack)->next;
+	top->next = NULL;
+	return (top);
 }
 
-int	ft_stackadd_front(t_stack **lst, int value)
+int	ft_stackadd_front(t_stack **stack, int value)
 {
-	t_stack	*l;
-	t_stack	*new;
+	t_stack	*new_node;
 
-	new = (t_stack *)malloc(sizeof(*new) * 1);
-	if (new == NULL)
-	{
-		ft_stackclear(lst);
-		return (1);
-	}
-	new->value = value;
-	if (ft_stacksize(*lst) == 0)
-		new->next = 0;
-	else
-		new->next = *lst;
-	*lst = new;
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (0);
+	new_node->value = value;
+	new_node->next = *stack;
+	*stack = new_node;
 	return (1);
 }
+
 
 void	init_stack(t_stack **stack, int argc, char **argv)
 {
@@ -113,7 +100,7 @@ void	init_stack(t_stack **stack, int argc, char **argv)
 	i = 1;
 	while (i < argc) 
 	{
-		ft_stackadd_back(stack, ft_toi(argv[i]));
+		ft_stackadd_back(stack, (int)ft_toi(argv[i]));
 		i++;
 	}
 }

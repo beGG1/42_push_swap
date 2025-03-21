@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 03:23:26 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/17 05:57:10 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:32:39 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	ft_stackclear(t_stack **lst);
+void	ft_stackclear(t_stack *lst);
 int		ft_stacksize(t_stack *lst);
 int		ft_stackadd_back(t_stack **lst, int value);
+int	ft_stackadd_front(t_stack **stack, int value);
 t_stack	*ft_pop(t_stack **lst);
 void	init_stack(t_stack **stack, int argc, char **argv);
 
@@ -42,9 +43,11 @@ int	rrb(t_stack **a);
 int	rrr(t_stack **a, t_stack **b);
 int sort(t_stack **a, t_stack **b);
 
-int	ft_toi(const char *nptr);
+long	ft_toi(const char *nptr);
 
 void	error_handler(char **argv);
+
+int	quick_sort_a(t_stack **a, t_stack **b, int dim, int count_r);
 
 
 #endif
