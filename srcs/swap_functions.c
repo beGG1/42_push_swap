@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 23:11:54 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/20 14:33:15 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:54:13 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,37 @@ int	sa(t_stack **a)
 {
 	t_stack	*first;
 	t_stack	*second;
+	int		temp;
 
 	if (!a || !(*a) || !(*a)->next)
-		return (0); // No need to swap if empty or one element
-
+		return (0);
 	first = *a;
 	second = (*a)->next;
-
-	// Swap values instead of removing and re-adding nodes
-	int temp = first->value;
+	temp = first->value;
 	first->value = second->value;
 	second->value = temp;
-
 	ft_printf("sa\n");
 	return (1);
 }
 
-int	sb(t_stack **a)
+int	sb(t_stack **b)
 {
 	t_stack	*first;
 	t_stack	*second;
+	int		temp;
 
-	if (!a || !(*a) || !(*a)->next)
-		return (0); // No need to swap if empty or one element
-
-	first = *a;
-	second = (*a)->next;
-
-	// Swap values instead of removing and re-adding nodes
-	int temp = first->value;
+	if (!b || !(*b) || !(*b)->next)
+		return (0);
+	first = *b;
+	second = (*b)->next;
+	temp = first->value;
 	first->value = second->value;
 	second->value = temp;
-
-	ft_printf("sa\n");
+	ft_printf("sb\n");
 	return (1);
 }
 
-int ss(t_stack **a, t_stack **b)
+int	ss(t_stack **a, t_stack **b)
 {
 	if (!sa(a) || !sb(b))
 	{

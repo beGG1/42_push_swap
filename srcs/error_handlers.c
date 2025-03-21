@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 09:48:47 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/19 16:49:02 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:34:52 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	duplication_error(char **argv)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 1;
 	while (argv[i])

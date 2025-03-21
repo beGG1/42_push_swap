@@ -3,6 +3,8 @@ SRCS		=	main.c \
 				swap_functions.c \
 				push_functions.c \
 				sort.c \
+				sort_2.c \
+				sort_3.c \
 				rotate_functions.c \
 				reverse_rotate_functions.c \
 				utils.c \

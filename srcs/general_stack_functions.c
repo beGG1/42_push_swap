@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 21:16:59 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/20 14:34:22 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:36:16 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_stackclear(t_stack *lst)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (lst)
 	{
 		while (lst)
 		{
-			temp = lst->next;  // Save the next node
-			free(lst);           // Free the current node
-			lst = temp;          // Move to the next node
+			temp = lst->next;
+			free(lst);
+			lst = temp;
 		}
 		lst = NULL;
 	}
@@ -54,7 +54,6 @@ int	ft_stackadd_back(t_stack **lst, int value)
 	}
 	new->value = value;
 	new->next = 0;
-
 	if (!lst || !(*lst))
 	{
 		*lst = new;
@@ -90,17 +89,4 @@ int	ft_stackadd_front(t_stack **stack, int value)
 	new_node->next = *stack;
 	*stack = new_node;
 	return (1);
-}
-
-
-void	init_stack(t_stack **stack, int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc) 
-	{
-		ft_stackadd_back(stack, (int)ft_toi(argv[i]));
-		i++;
-	}
 }

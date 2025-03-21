@@ -6,7 +6,7 @@
 /*   By: sshabali <sshabali@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 10:00:15 by sshabali          #+#    #+#             */
-/*   Updated: 2025/03/19 15:41:48 by sshabali         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:54:36 by sshabali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long	ft_toi(const char *nptr)
 {
 	int		i;
-	long		sign;
+	long	sign;
 	long	res;
 
 	i = 0;
